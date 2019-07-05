@@ -6,6 +6,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use File;
+use Image;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,4 +39,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setAvatarAttribute($value)
+    {
+        // handle the user upload of avatar
+        if ($value->hasFile('avatar')) {
+            $avatar = $value->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+        
+            // delete current image linked to user before uploading new image
+            if ($this->avatar !== 'default.png') {
+                $file = 'uploads/avatars/' . $this->avatar;
+        
+                if (File::exists($file)) {
+                    unlink($file);
+                }
+            }
+        
+            Image::make($avatar)->resize(300, 300)->save('uploads/avatars/' . $filename);
+            $this->attributes['avatar'] = $filename;
+        }
+    }
 }
