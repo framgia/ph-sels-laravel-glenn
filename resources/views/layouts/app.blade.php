@@ -29,6 +29,7 @@
             <div class="container">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     E-Learning System
@@ -42,7 +43,17 @@
 
 
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+
+                @guest
+                <a class="navbar-brand" href="{{ url('/') }}">
+                @else
+                <a class="navbar-brand" href="{{ url('/dashboard') }}">
+                @endguest
+                    E-Learning System
+>>>>>>> [SELS-TASK] User Dashboard
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

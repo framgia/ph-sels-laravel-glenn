@@ -57,10 +57,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $img = url('storage/img/2x2.jpg');
-        
         return view('users.show', [
-            'img' => $img,
             'user' => User::find($id),
         ]);
     }
