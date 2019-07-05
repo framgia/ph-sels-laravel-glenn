@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $table->string('avatar')->default('default.png');
 =======
             $table->binary('avatar')->nullable();
@@ -30,6 +31,9 @@ class CreateUsersTable extends Migration
 =======
             $table->string('avatar')->default('default.png');
 >>>>>>> [SELS-TASK] User Edit Page and Home Page
+=======
+            $table->binary('avatar')->nullable();
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
             $table->boolean('is_admin');
             $table->rememberToken();
             $table->timestamps();

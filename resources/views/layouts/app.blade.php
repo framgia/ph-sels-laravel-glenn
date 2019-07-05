@@ -49,6 +49,7 @@
                     E-Learning System
 =======
                 <a class="navbar-brand" href="{{ url('/') }}">
+<<<<<<< HEAD
 =======
                 <a class="navbar-brand" href="{{ url('/home') }}">
 >>>>>>> [SELS-TASK] User Profile Page
@@ -58,10 +59,13 @@
 =======
                 <a class="navbar-brand" href="{{ url('/dashboard') }}">
 >>>>>>> [SELS-TASK] User Dashboard
+=======
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
 
                     E-Learning System
 
 
+<<<<<<< HEAD
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
 =======
 
@@ -78,6 +82,8 @@
                     E-Learning System
 
 
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
                 </a>
 
@@ -123,6 +129,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <a class="dropdown-item" href="/users/{{ Auth::id() }}">
 =======
                                     <a class="dropdown-item" href="#">
@@ -143,6 +150,12 @@
                                         Edit Profile
                                     </a>
 
+=======
+                                    <a class="dropdown-item" href="#">
+                                        Profile
+                                    </a>
+
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

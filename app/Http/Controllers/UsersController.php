@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\User;
 use Image;
+=======
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
 
 class UsersController extends Controller
 {
     /**
+<<<<<<< HEAD
      * Create a new controller instance.
      *
      * @return void
@@ -22,6 +26,8 @@ class UsersController extends Controller
     }
 
     /**
+=======
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -62,6 +68,7 @@ class UsersController extends Controller
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         return view('users.show', [
 =======
         $img = url('storage/img/2x2.jpg');
@@ -78,6 +85,9 @@ class UsersController extends Controller
             'user' => User::findOrFail($id),
 >>>>>>> [SELS-TASK] User Edit Page and Home Page
         ]);
+=======
+        return view('users.user_show');
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
     }
 
     /**
@@ -88,9 +98,13 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< HEAD
         return view('users.edit', [
             'user' => User::find($id),
         ]);
+=======
+        //
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
     }
 
     /**
@@ -100,6 +114,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function update(Request $request, User $user)
     {
         $user = Auth::user();
@@ -133,6 +148,12 @@ class UsersController extends Controller
         return view('users.edit', compact('user'))
             ->with('success','You have successfully upload image.');
     } 
+=======
+    public function update(Request $request, $id)
+    {
+        //
+    }
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
 
     /**
      * Remove the specified resource from storage.
@@ -142,6 +163,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         // log user out before deletion
         Auth::logout();
 
@@ -150,5 +172,8 @@ class UsersController extends Controller
 
         // redirect to welcome page
         return view('welcome');
+=======
+        //
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
     }
 }
