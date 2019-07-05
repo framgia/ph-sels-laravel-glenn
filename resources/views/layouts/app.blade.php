@@ -47,11 +47,18 @@
 
                 @guest
                 <a class="navbar-brand" href="{{ url('/') }}">
+<<<<<<< HEAD
                 @else
                 <a class="navbar-brand" href="{{ url('/dashboard') }}">
                 @endguest
                     E-Learning System
 >>>>>>> [SELS-TASK] User Dashboard
+=======
+
+                    E-Learning System
+
+
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -85,6 +92,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <a class="dropdown-item" href="/users/{{ Auth::id() }}">
 =======
                                     <a class="dropdown-item" href="#">
@@ -92,6 +100,9 @@
 =======
                                     <a class="dropdown-item" href="/users/{{ Auth::id() }}">
 >>>>>>> [SELS-TASK] User Profile Page
+=======
+                                    <a class="dropdown-item" href="#">
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
                                         Profile
                                     </a>
 
