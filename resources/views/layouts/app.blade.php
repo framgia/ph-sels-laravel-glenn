@@ -27,9 +27,17 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+<<<<<<< HEAD
 
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     E-Learning System
+=======
+                <a class="navbar-brand" href="{{ url('/') }}">
+
+                    E-Learning System
+
+
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -60,7 +68,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
                                     <a class="dropdown-item" href="/users/{{ Auth::id() }}">
+=======
+                                    <a class="dropdown-item" href="#">
+>>>>>>> [SELS-TASK] User Registration, Login, and Logout
                                         Profile
                                     </a>
 
