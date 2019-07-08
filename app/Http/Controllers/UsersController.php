@@ -3,9 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class UsersController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +57,12 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return view('users.user_show');
+        $img = url('storage/img/2x2.jpg');
+        
+        return view('users.user_show', [
+            'img' => $img,
+            'user' => User::find($id),
+        ]);
     }
 
     /**
