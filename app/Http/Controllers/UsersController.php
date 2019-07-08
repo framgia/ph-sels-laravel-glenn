@@ -10,12 +10,15 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\User;
 use Image;
+<<<<<<< HEAD
 =======
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
 =======
 use Illuminate\Support\Facades\Auth;
 use App\User;
 >>>>>>> [SELS-TASK] User Profile Page
+=======
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
 
 class UsersController extends Controller
 {
@@ -81,6 +84,7 @@ class UsersController extends Controller
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         return view('users.show', [
 =======
         $img = url('storage/img/2x2.jpg');
@@ -102,10 +106,13 @@ class UsersController extends Controller
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
 =======
         $img = url('storage/img/2x2.jpg');
+=======
+        $img = asset('storage/img/2x2.jpg');
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
         
-        return view('users.user_show', [
+        return view('users.show', [
             'img' => $img,
-            'user' => User::find($id),
+            'user' => User::findOrFail($id),
         ]);
 >>>>>>> [SELS-TASK] User Profile Page
     }
@@ -119,12 +126,18 @@ class UsersController extends Controller
     public function edit($id)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return view('users.edit', [
             'user' => User::find($id),
         ]);
 =======
         //
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+        return view('users.edit', [
+            'user' => User::find($id),
+        ]);
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
     }
 
     /**
@@ -134,6 +147,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
 <<<<<<< HEAD
     public function update(Request $request, User $user)
     {
@@ -174,6 +188,41 @@ class UsersController extends Controller
         //
     }
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+    public function update(Request $request, User $user)
+    {
+        $user = Auth::user();
+
+        // Handle the user upload of avatar
+        if($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+
+            // Delete current image before uploading new image
+            if($user->avatar !== 'default.png') {
+
+                $file = 'uploads/avatars/' . $user->avatar;
+
+                if (File::exists($file)) {
+                    unlink($file);
+                }
+            }
+
+            Image::make($avatar)->resize(300, 300)->save('uploads/avatars/' . $filename);
+            $user->update(['avatar' => $filename]);
+        }
+        
+        $user->update([
+            'first_name' => request('first_name'),
+            'last_name' => request('last_name'),
+            'username' => request('username'),
+            'email' => request('email'),
+        ]);
+        
+        return view('users.edit', compact('user'))
+            ->with('success','You have successfully upload image.');
+    } 
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
 
     /**
      * Remove the specified resource from storage.
@@ -184,6 +233,9 @@ class UsersController extends Controller
     public function destroy($id)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
         // log user out before deletion
         Auth::logout();
 
@@ -192,8 +244,11 @@ class UsersController extends Controller
 
         // redirect to welcome page
         return view('welcome');
+<<<<<<< HEAD
 =======
         //
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
     }
 }

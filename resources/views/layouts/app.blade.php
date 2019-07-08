@@ -46,6 +46,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     E-Learning System
@@ -96,6 +97,8 @@
                 </a>
 
 =======
+=======
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
             
                 @guest
                     <a class="navbar-brand" href="{{ url('/') }}">E-Learning System</a>
@@ -103,6 +106,9 @@
                     <a class="navbar-brand" href="{{ url('/dashboard') }}">E-Learning System</a>
                 @endguest
             
+<<<<<<< HEAD
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
+=======
 >>>>>>> [SELS-TASK] User Edit Page and Home Page
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -167,7 +173,14 @@
                                         Profile
                                     </a>
 
+<<<<<<< HEAD
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}/edit">
+                                        Edit Profile
+                                    </a>
+
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

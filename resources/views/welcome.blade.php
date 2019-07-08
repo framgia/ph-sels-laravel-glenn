@@ -18,6 +18,7 @@ Phasellus fringilla eleifend ornare. Fusce vel imperdiet neque, ut vehicula arcu
 </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @endsection('content')
 =======
             .position-ref {
@@ -88,3 +89,6 @@ Phasellus fringilla eleifend ornare. Fusce vel imperdiet neque, ut vehicula arcu
     </body>
 </html>
 >>>>>>> [SELS-TASK] User Dashboard
+=======
+@endsection('content')
+>>>>>>> [SELS-TASK] User Edit Page and Home Page

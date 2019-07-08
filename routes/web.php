@@ -23,6 +23,7 @@ Auth::routes();
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 <<<<<<< HEAD
 =======
@@ -46,4 +47,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 =======
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 >>>>>>> [SELS-TASK] User Dashboard
+=======
+Route::view('/', 'welcome');
+Route::get('/dashboard', 'DashboardController@index');
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
 Route::resource('users', 'UsersController');
