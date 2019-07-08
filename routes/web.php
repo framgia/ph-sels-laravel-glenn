@@ -22,6 +22,7 @@ Auth::routes();
 <<<<<<< HEAD
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 <<<<<<< HEAD
 =======
@@ -42,4 +43,7 @@ Route::get('/dashboard', 'DashboardController@index');
 >>>>>>> [SELS-TASK] User Profile Page
 Route::get('/home', 'HomeController@index')->name('home');
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+Route::get('/dashboard', 'DashboardController@index')->name('home');
+>>>>>>> [SELS-TASK] User Dashboard
 Route::resource('users', 'UsersController');

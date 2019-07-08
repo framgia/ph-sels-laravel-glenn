@@ -45,6 +45,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     E-Learning System
@@ -82,6 +83,9 @@
 =======
                 <a class="navbar-brand" href="{{ url('/home') }}">
 >>>>>>> [SELS-TASK] User Profile Page
+=======
+                <a class="navbar-brand" href="{{ url('/dashboard') }}">
+>>>>>>> [SELS-TASK] User Dashboard
 
                     E-Learning System
 
