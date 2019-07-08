@@ -22,10 +22,14 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 <<<<<<< HEAD
+<<<<<<< HEAD
             $table->string('avatar')->default('default.png');
 =======
             $table->binary('avatar')->nullable();
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+            $table->string('avatar')->default('default.png');
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
             $table->boolean('is_admin');
             $table->rememberToken();
             $table->timestamps();

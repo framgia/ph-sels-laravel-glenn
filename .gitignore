@@ -13,4 +13,8 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
+<<<<<<< HEAD
 !*/public/storage/uploads/avatars/default.png
+=======
+!*/public/uploads/avatars/default.png
+>>>>>>> [SELS-TASK] User Edit Page and Home Page

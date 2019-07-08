@@ -22,11 +22,23 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+
+    body {
+        background: #ECE9E6;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    </style>
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -69,6 +81,15 @@
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
                 </a>
 
+=======
+            
+                @guest
+                    <a class="navbar-brand" href="{{ url('/') }}">E-Learning System</a>
+                @else
+                    <a class="navbar-brand" href="{{ url('/dashboard') }}">E-Learning System</a>
+                @endguest
+            
+>>>>>>> [SELS-TASK] User Edit Page and Home Page
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -116,6 +137,10 @@
                                     <a class="dropdown-item" href="/users/{{ Auth::id() }}">
 >>>>>>> [SELS-TASK] User Profile Page
                                         Profile
+                                    </a>
+
+                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}/edit">
+                                        Edit Profile
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"

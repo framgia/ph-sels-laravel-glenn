@@ -3,12 +3,15 @@
 @section('content')
 
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row pb-4">
+        <h4> My Profile </h4>
+    </div>
 
+    <div class="row">
         <div class="col-5">
             <div class="container">
-                <img src="/uploads/avatars/{{ $user->avatar }}" class="border img-fluid rounded-circle mx-auto d-block"
-                    style="max-width: 250px" alt="User Avatar" height="200" />
+                <img src="/uploads/avatars/{{ $user->avatar }}" class="border img-fluid rounded-circle mx-auto d-block" style="max-width: 250px"
+                    alt="User Avatar" height="200" />
             </div>
 
             <div class="container pt-4">
@@ -106,9 +109,8 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
+</div>
 
-    @endsection
+@endsection
