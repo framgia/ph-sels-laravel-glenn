@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -11,11 +12,18 @@ use App\User;
 use Image;
 =======
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+use Illuminate\Support\Facades\Auth;
+use App\User;
+>>>>>>> [SELS-TASK] User Profile Page
 
 class UsersController extends Controller
 {
     /**
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> [SELS-TASK] User Profile Page
      * Create a new controller instance.
      *
      * @return void
@@ -26,8 +34,11 @@ class UsersController extends Controller
     }
 
     /**
+<<<<<<< HEAD
 =======
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+>>>>>>> [SELS-TASK] User Profile Page
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -69,6 +80,7 @@ class UsersController extends Controller
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         return view('users.show', [
 =======
         $img = url('storage/img/2x2.jpg');
@@ -88,6 +100,14 @@ class UsersController extends Controller
 =======
         return view('users.user_show');
 >>>>>>> [SELS-TASK] User Registration, Login, and Logout
+=======
+        $img = url('storage/img/2x2.jpg');
+        
+        return view('users.user_show', [
+            'img' => $img,
+            'user' => User::find($id),
+        ]);
+>>>>>>> [SELS-TASK] User Profile Page
     }
 
     /**

@@ -44,6 +44,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     E-Learning System
@@ -78,6 +79,9 @@
                     E-Learning System
 >>>>>>> [SELS-TASK] User Dashboard
 =======
+=======
+                <a class="navbar-brand" href="{{ url('/home') }}">
+>>>>>>> [SELS-TASK] User Profile Page
 
                     E-Learning System
 
@@ -130,6 +134,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <a class="dropdown-item" href="/users/{{ Auth::id() }}">
 =======
                                     <a class="dropdown-item" href="#">
@@ -152,6 +157,9 @@
 
 =======
                                     <a class="dropdown-item" href="#">
+=======
+                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}">
+>>>>>>> [SELS-TASK] User Profile Page
                                         Profile
                                     </a>
 
