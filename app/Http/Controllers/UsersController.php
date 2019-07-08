@@ -57,7 +57,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+<<<<<<< HEAD
         return view('users.show', [
+=======
+        $img = url('storage/img/2x2.jpg');
+        
+        return view('users.user_show', [
+            'img' => $img,
+>>>>>>> [SELS-TASK] User Profile Page
             'user' => User::find($id),
         ]);
     }
