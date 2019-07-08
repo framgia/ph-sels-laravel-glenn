@@ -4,34 +4,59 @@
 
 <div class="container">
     <div class="row pb-4">
-        <h4> Dashboard </h4>
+        <h4> My Profile </h4>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-5">
+            <div class="container">
+                <img src="/uploads/avatars/{{ $user->avatar }}" class="border img-fluid rounded-circle mx-auto d-block" style="max-width: 250px"
+                    alt="User Avatar" height="200" />
+            </div>
+
+            <div class="container pt-4">
+                <h2 class="text-center"> {{ $user->username }} </h2>
+            </div>
+
+            <div class="container border-bottom">
+                <p class="text-muted text-center"> {{ $user->first_name . ' ' . $user->last_name }} </p>
+            </div>
+
             <div class="row pt-4">
-                <div class="col-5">
-                    <img src="/uploads/avatars/{{ $user->avatar }}" class="border img-fluid rounded-circle mx-auto d-block"
-                        style="max-width: 150px" alt="User Avatar" height="200" />
-                </div>
-
-                <div class="col pl-4">
-                    <div class="row">
-                        <h5> <strong> {{ $user->first_name . ' ' . $user->last_name }} </strong> </h5>
+                <div class="col">
+                    <div class="container">
+                        <p class="text-center"> <strong> 50 </strong> </p>
                     </div>
 
-                    <div class="row pt-4">
-                        <a href="#"> Learned 20 of 20 words </a>
-                        <a href="#"> Learned 5 lessons </a>
+                    <div class="container">
+                        <p class="text-muted text-center"> followers </p>
                     </div>
                 </div>
+
+                <div class="col">
+                    <div class="container">
+                        <p class="text-center"> <strong> 50 </strong> </p>
+                    </div>
+
+                    <div class="container">
+                        <p class="text-muted text-center"> following </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <button type="" class="btn btn-primary">Follow</button>
+            </div>
+
+            <div class="row justify-content-center pt-4">
+                <a href="#">Learned 20 words.</a>
             </div>
         </div>
 
 
         <div class="col border">
             <div class="row">
-                <h4 class="p-4"> Activity Feed </h4>
+                <h4 class="p-4"> Activities </h4>
             </div>
 
             <div class="col-11 mx-auto border-bottom">
@@ -39,7 +64,7 @@
 
             <div class="row pt-4 justify-content-center">
                 <div class="col-2">
-                    <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
+                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
                 </div>
 
                 <div class="col-8">
@@ -55,7 +80,7 @@
 
             <div class="row pt-4 justify-content-center">
                 <div class="col-2">
-                    <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
+                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
                 </div>
 
                 <div class="col-8">
@@ -71,7 +96,7 @@
 
             <div class="row pt-4 justify-content-center">
                 <div class="col-2">
-                    <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
+                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
                 </div>
 
                 <div class="col-8">

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\User;
+use Image;
 
 class UsersController extends Controller
 {
@@ -57,11 +60,11 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $img = url('storage/img/2x2.jpg');
+        $img = asset('storage/img/2x2.jpg');
         
-        return view('users.user_show', [
+        return view('users.show', [
             'img' => $img,
-            'user' => User::find($id),
+            'user' => User::findOrFail($id),
         ]);
     }
 
@@ -73,7 +76,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('users.edit', [
+            'user' => User::find($id),
+        ]);
     }
 
     /**
@@ -83,10 +88,39 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
-    }
+        $user = Auth::user();
+
+        // Handle the user upload of avatar
+        if($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+
+            // Delete current image before uploading new image
+            if($user->avatar !== 'default.png') {
+
+                $file = 'uploads/avatars/' . $user->avatar;
+
+                if (File::exists($file)) {
+                    unlink($file);
+                }
+            }
+
+            Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+            $user->update(['avatar' => $filename]);
+        }
+        
+        $user->update([
+            'first_name' => request('first_name'),
+            'last_name' => request('last_name'),
+            'username' => request('username'),
+            'email' => request('email'),
+        ]);
+        
+        return view('users.edit', compact('user'))
+            ->with('success','You have successfully upload image.');
+    } 
 
     /**
      * Remove the specified resource from storage.
