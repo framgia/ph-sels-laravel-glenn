@@ -59,7 +59,7 @@ class UsersController extends Controller
     {
         $img = url('storage/img/2x2.jpg');
         
-        return view('users.user_show', [
+        return view('users.show', [
             'img' => $img,
             'user' => User::find($id),
         ]);
