@@ -42,90 +42,13 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     E-Learning System
-=======
-                <a class="navbar-brand" href="{{ url('/') }}">
-<<<<<<< HEAD
-=======
-                <a class="navbar-brand" href="{{ url('/home') }}">
->>>>>>> [SELS-TASK] User Profile Page
-=======
-                <a class="navbar-brand" href="{{ url('/home') }}">
->>>>>>> [SELS-TASK] User Profile Page
-=======
-                <a class="navbar-brand" href="{{ url('/dashboard') }}">
->>>>>>> [SELS-TASK] User Dashboard
-=======
->>>>>>> [SELS-TASK] User Registration, Login, and Logout
-
-                    E-Learning System
-
-
-<<<<<<< HEAD
->>>>>>> [SELS-TASK] User Registration, Login, and Logout
-=======
-
-                @guest
-                <a class="navbar-brand" href="{{ url('/') }}">
-<<<<<<< HEAD
-                @else
-                <a class="navbar-brand" href="{{ url('/dashboard') }}">
-                @endguest
-                    E-Learning System
->>>>>>> [SELS-TASK] User Dashboard
-=======
-=======
-                <a class="navbar-brand" href="{{ url('/home') }}">
->>>>>>> [SELS-TASK] User Profile Page
-=======
-                <a class="navbar-brand" href="{{ url('/dashboard') }}">
->>>>>>> [SELS-TASK] User Dashboard
-
-                    E-Learning System
-
-
->>>>>>> [SELS-TASK] User Registration, Login, and Logout
-=======
->>>>>>> [SELS-TASK] User Registration, Login, and Logout
                 </a>
-
-=======
-=======
->>>>>>> [SELS-TASK] User Edit Page and Home Page
-            
-=======
-
->>>>>>> [SELS-TASK] Relationships WIP
-                @guest
-                <a class="navbar-brand" href="{{ url('/') }}">E-Learning System</a>
-                @else
-                <a class="navbar-brand" href="{{ url('/dashboard') }}">E-Learning System</a>
-                @endguest
-<<<<<<< HEAD
-            
-<<<<<<< HEAD
->>>>>>> [SELS-TASK] User Edit Page and Home Page
-=======
->>>>>>> [SELS-TASK] User Edit Page and Home Page
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-=======
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
->>>>>>> [SELS-TASK] Relationships WIP
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -133,7 +56,6 @@
 
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                    
                     @guest 
                     @else
                         <ul class="navbar-nav">
@@ -168,69 +90,18 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
-
+                            
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/users/{{ Auth::id() }}">
                                     Profile
                                 </a>
-
-<<<<<<< HEAD
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}">
-=======
-                                    <a class="dropdown-item" href="#">
->>>>>>> [SELS-TASK] User Registration, Login, and Logout
-=======
-                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}">
->>>>>>> [SELS-TASK] User Profile Page
-=======
-                                    <a class="dropdown-item" href="#">
->>>>>>> [SELS-TASK] User Registration, Login, and Logout
-=======
-                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}">
->>>>>>> [SELS-TASK] User Profile Page
-                                        Profile
-                                    </a>
-
-                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}/edit">
-                                        Edit Profile
-                                    </a>
-
-=======
-                                    <a class="dropdown-item" href="#">
-=======
-                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}">
->>>>>>> [SELS-TASK] User Profile Page
-                                        Profile
-                                    </a>
-
-<<<<<<< HEAD
->>>>>>> [SELS-TASK] User Registration, Login, and Logout
-=======
-                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}/edit">
-                                        Edit Profile
-                                    </a>
-
->>>>>>> [SELS-TASK] User Edit Page and Home Page
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-=======
                                 <a class="dropdown-item" href="/users/{{ Auth::id() }}/edit">
                                     Edit Profile
                                 </a>
-
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
->>>>>>> [SELS-TASK] Relationships WIP
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
                                     @csrf
