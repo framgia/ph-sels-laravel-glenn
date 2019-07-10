@@ -65,10 +65,14 @@
             <div class="row pt-4 justify-content-center">
                 <div class="col-2">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
 =======
                     <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
 >>>>>>> [SELS-TASK] User Edit Page and Home Page
+=======
+                    <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
+>>>>>>> [SELS-TASK] Relationships WIP
                 </div>
 
                 <div class="col-8">
@@ -85,10 +89,14 @@
             <div class="row pt-4 justify-content-center">
                 <div class="col-2">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
 =======
                     <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
 >>>>>>> [SELS-TASK] User Edit Page and Home Page
+=======
+                    <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
+>>>>>>> [SELS-TASK] Relationships WIP
                 </div>
 
                 <div class="col-8">
@@ -105,10 +113,14 @@
             <div class="row pt-4 justify-content-center">
                 <div class="col-2">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
 =======
                     <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
 >>>>>>> [SELS-TASK] User Edit Page and Home Page
+=======
+                    <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
+>>>>>>> [SELS-TASK] Relationships WIP
                 </div>
 
                 <div class="col-8">
