@@ -13,11 +13,13 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $category->title }}</h5>
                 <p class="card-text">{{ $category->description }}</p>
-                <a href="#" class="btn btn-primary">Begin</a>
+
+                <form method="GET" action="/categories/{{ $category->id }}">
+                    <button type="submit" class="btn btn-primary">Begin</a>
+                </form>
             </div>
         </div>
         @endforeach
-
     </div>
 </div>
 @endsection
