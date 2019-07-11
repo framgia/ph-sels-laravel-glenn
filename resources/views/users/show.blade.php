@@ -56,58 +56,9 @@
                 <h4 class="p-4"> Activities </h4>
             </div>
 
-            <div class="col-11 mx-auto border-bottom">
+            @include('layouts.test_activity')
+
             </div>
-
-            <div class="row pt-4 justify-content-center">
-                <div class="col-2">
-                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
-                </div>
-
-                <div class="col-8">
-                    <div class="row">
-                        <p><a href="#"> Jane </a> learned 20 of 20 words in <a href="#"> Basic 500 </a>
-                            <p>
-                    </div>
-                    <div class="row">
-                        <small class="text-muted"> 2 days ago </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row pt-4 justify-content-center">
-                <div class="col-2">
-                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
-                </div>
-
-                <div class="col-8">
-                    <div class="row">
-                        <p><a href="#"> Jane </a> learned 20 of 20 words in <a href="#"> Basic 500 </a>
-                            <p>
-                    </div>
-                    <div class="row">
-                        <small class="text-muted"> 2 days ago </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row pt-4 justify-content-center">
-                <div class="col-2">
-                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
-                </div>
-
-                <div class="col-8">
-                    <div class="row">
-                        <p><a href="#"> Jane </a> learned 20 of 20 words in <a href="#"> Basic 500 </a>
-                            <p>
-                    </div>
-                    <div class="row">
-                        <small class="text-muted"> 2 days ago </small>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
     </div>
 

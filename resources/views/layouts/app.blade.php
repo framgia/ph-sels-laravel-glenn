@@ -72,6 +72,10 @@
                                         Profile
                                     </a>
 
+                                    <a class="dropdown-item" href="/users/{{ Auth::id() }}/edit">
+                                        Edit Profile
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -90,6 +94,12 @@
         </nav>
 
         <main class="py-4">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    @include('layouts.flash_message')
+                </div>
+            </div>
+            
             @yield('content')
         </main>
     </div>
