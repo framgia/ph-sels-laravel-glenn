@@ -7,6 +7,13 @@ use App\Category;
 
 class CategoriesController extends Controller
 {
+    public function adminIndex()
+    {  
+        $categories = Category::all();
+
+        return view('categories.admin_index', compact('categories'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +35,7 @@ class CategoriesController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        
+
         return view('categories.show', compact('category'));
     }
 
