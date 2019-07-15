@@ -25,3 +25,5 @@ Route::resource('categories', 'CategoriesController');
 
 Route::match(['get', 'post'], '/words/create', 'WordsController@create');
 Route::post('/words', 'WordsController@store');
+
+Route::get('/follow', 'RelationshipsController@create');
