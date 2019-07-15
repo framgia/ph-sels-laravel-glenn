@@ -41,9 +41,20 @@
                 </div>
             </div>
 
+            @if ($following == 0 || $following == 1)
             <div class="row justify-content-center">
-                <button type="" class="btn btn-primary">Follow</button>
+                <form method="GET" action="/follow">
+                    @csrf
+                    <input type="hidden" name="onpage_userid" value="{{ $following }}">
+
+                    @if ($following == 0)
+                    <button type="submit" class="btn btn-primary">Follow</button>
+                    @else 
+                    <button type="submit" class="btn btn-danger">Unfollow</button>
+                    @endif
+                </form>
             </div>
+            @endif
 
             <div class="row justify-content-center pt-4">
                 <a href="#">Learned 20 words.</a>
@@ -56,59 +67,10 @@
                 <h4 class="p-4"> Activities </h4>
             </div>
 
-            <div class="col-11 mx-auto border-bottom">
-            </div>
-
-            <div class="row pt-4 justify-content-center">
-                <div class="col-2">
-                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
-                </div>
-
-                <div class="col-8">
-                    <div class="row">
-                        <p><a href="#"> Jane </a> learned 20 of 20 words in <a href="#"> Basic 500 </a>
-                            <p>
-                    </div>
-                    <div class="row">
-                        <small class="text-muted"> 2 days ago </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row pt-4 justify-content-center">
-                <div class="col-2">
-                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
-                </div>
-
-                <div class="col-8">
-                    <div class="row">
-                        <p><a href="#"> Jane </a> learned 20 of 20 words in <a href="#"> Basic 500 </a>
-                            <p>
-                    </div>
-                    <div class="row">
-                        <small class="text-muted"> 2 days ago </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row pt-4 justify-content-center">
-                <div class="col-2">
-                    <img src="{{ $img }}" class="img-thumbnail mx-auto d-block" alt="User Avatar" height="250" />
-                </div>
-
-                <div class="col-8">
-                    <div class="row">
-                        <p><a href="#"> Jane </a> learned 20 of 20 words in <a href="#"> Basic 500 </a>
-                            <p>
-                    </div>
-                    <div class="row">
-                        <small class="text-muted"> 2 days ago </small>
-                    </div>
-                </div>
-            </div>
-
+            @include('layouts.test_activity')
 
         </div>
     </div>
+</div>
 
-    @endsection
+@endsection
