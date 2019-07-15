@@ -79,7 +79,9 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -91,7 +93,19 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['string', 'max:255'],
+        ]);
+
+        $category->update([
+            'title' => $validatedData['title'],
+            'description' =>  $validatedData['description'],
+        ]);
+
+        return back()->with('success', 'Category successfully edited.');
     }
 
     /**
