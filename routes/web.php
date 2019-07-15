@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UsersController');
+Route::resource('dashboard', 'DashboardController');
+Route::get('/categories/edit', 'CategoriesController@adminIndex');
+Route::resource('categories', 'CategoriesController');
