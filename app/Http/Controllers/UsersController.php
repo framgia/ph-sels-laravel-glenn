@@ -27,7 +27,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -59,9 +61,21 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
+        // check for following status
+        if(Auth::id() == $id) {
+            $following = 2; // self
+        } else {
+            if(User::find(Auth::id())->relationships()->where('followed_id', $id)->first()) {
+                $following = 1; // already following
+            } else {
+                $following = 0; // not following
+            }
+        }
 
-        return view('users.show', compact('user'));
+        // load profile page data
+        $user = User::find($id);
+
+        return view('users.show', compact('user', 'following'));
     }
 
     /**
