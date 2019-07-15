@@ -23,11 +23,25 @@
                     <td>{{ $category->title }}</td>
                     <td>{{ $category->description }}</td>
                     <td>
-                        <a href="#">Add Word</a>
-                        |
-                        <a href="#">Edit</a>
-                        |
-                        <a href="#">Delete</a>
+                        <div class="btn-group" role="group">
+                            <form method="POST" action="/words/create">
+                                @csrf
+
+                                <input type="hidden" name="category_id" value="{{ $category->id }}">
+                                <button type="submit" class="btn btn-primary" name="add_word">Add Word</button>
+                            </form>
+
+                            <a href="/categories/{{ $category->id }}/edit" class="btn btn-primary ml-4">Edit</a>
+                            <form method="POST" action="/categories/{{ $category->id }}" class="ml-4">
+                                @csrf
+
+                                <input type="hidden" name="category_id" value="{{ $category->id }}">
+
+                                @csrf 
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" name="add_word">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

@@ -67,7 +67,7 @@ class CategoriesController extends Controller
             'description' => $validatedData['description'],
         ]);
 
-        return redirect('/categories');
+        return back()->with('success', 'Category successfully created.');
     }
 
 
@@ -102,6 +102,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+
+        return back()->with('success', 'Category successfully deleted.');
     }
 }
