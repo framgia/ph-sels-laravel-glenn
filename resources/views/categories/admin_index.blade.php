@@ -26,7 +26,6 @@
                         <div class="btn-group" role="group">
                             <form method="POST" action="/words/create">
                                 @csrf
-
                                 <input type="hidden" name="category_id" value="{{ $category->id }}">
                                 <button type="submit" class="btn btn-primary" name="add_word">Add Word</button>
                             </form>

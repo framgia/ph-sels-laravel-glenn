@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWordsTable extends Migration
+class CreateChoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateWordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('words', function (Blueprint $table) {
+        Schema::create('choices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('word_id');
 
-            $table->foreign('category_id')
-            ->references('id')->on('categories')
+            $table->foreign('word_id')
+            ->references('id')->on('words')
             ->onDelete('cascade');
 
             $table->timestamps();
-            $table->string('question');
+            $table->string('content');
+            $table->boolean('is_correct');
 
         });
     }
@@ -34,6 +35,6 @@ class CreateWordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('words');
+        Schema::dropIfExists('choices');
     }
 }

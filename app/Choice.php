@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Word extends Model
+class Choice extends Model
 {
     protected $fillable = [
-        'category_id', 'title',
+        'word_id', 'content', 'is_correct'
     ];
 }
