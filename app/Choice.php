@@ -9,4 +9,9 @@ class Choice extends Model
     protected $fillable = [
         'word_id', 'content', 'is_correct'
     ];
+
+    public function word()
+    {
+        return $this->belongsTo('App\Word');
+    }
 }

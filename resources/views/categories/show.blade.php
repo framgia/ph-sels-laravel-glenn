@@ -14,29 +14,38 @@
                 </div>
             </div>
 
-            <div class="row pt-5">
-                <div class="col">
-                    <img src="/uploads/avatars/default.png" class="border img-fluid rounded-circle mx-auto d-block"
-                        style="max-width: 250px" alt="Character" />
-                </div>
-                <div class="col">
-                    <form>
-                        <div class="row justify-content-center p-2">
-                            <button type="submit" class="btn btn-primary btn-lg">Answer</button>
-                        </div>
-                        <div class="row justify-content-center p-2">
-                            <button type="submit" class="btn btn-primary btn-lg">Answer</button>
-                        </div>
-                        <div class="row justify-content-center p-2">
-                            <button type="submit" class="btn btn-primary btn-lg">Answer</button>
-                        </div>
-                        <div class="row justify-content-center p-2">
-                            <button type="submit" class="btn btn-primary btn-lg">Answer</button>
-                        </div>
-                    </form>
+            <form method="POST" action="/quizSession">
 
+                @csrf 
+                
+                <div class="row pt-5">
+                    <div class="col">
+                        <img src="/uploads/avatars/default.png" class="border img-fluid rounded-circle mx-auto d-block"
+                            style="max-width: 250px" alt="Character" />
+                    </div>
+                    <div class="col">
+
+
+                    <div class="form-group justify-content-center">
+                    </div>
+                        <form>
+                            <div class="row justify-content-center p-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Answer</button>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Answer</button>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Answer</button>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Answer</button>
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

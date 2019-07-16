@@ -14,4 +14,14 @@ class Category extends Model
     protected $fillable = [
         'title', 'description',
     ];
+
+    public function words()
+    {
+        return $this->hasMany('App\Word');
+    }
+
+    public function choices()
+    {
+        return $this->hasManyThrough('App\Choice', 'App\Word');
+    }
 }

@@ -29,3 +29,5 @@ Route::post('/words', 'WordsController@store');
 // relationships
 Route::get('/follow', 'RelationshipsController@create');
 Route::get('/users/{id}/relationships', 'RelationshipsController@show');
+
+Route::post('/quizSession', 'QuizController@quizSession');

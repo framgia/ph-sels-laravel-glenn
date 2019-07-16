@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Category;
+use App\Session;
 
 class CategoriesController extends Controller
 {
@@ -34,8 +36,25 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
+        // get category id and user id
         $category = Category::find($id);
+        
+        $session = Session::where([['user_id', Auth::id()], ['category_id', 1]]);
 
+        dd($session);
+
+        // check if session exists
+        if($session->exists()) {
+            if($session->is_finished) {
+                dd('yes i am finished');
+            } else {
+                dd('no i am not finished');
+            }
+        } else {
+            dd('no, i dont exist');
+        }
+        
+        dd('henlo');
         return view('categories.show', compact('category'));
     }
 
