@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Relationship;
 use Image;
 use File;
 
@@ -63,19 +64,31 @@ class UsersController extends Controller
     {
         // check for following status
         if(Auth::id() == $id) {
-            $following = 2; // self
+            $relationship['status'] = 2; // self
         } else {
             if(Auth::user()->relationships()->where('followed_id', $id)->first()) {
-                $following = 1; // already following
+                $relationship['status'] = 1; // already following
             } else {
-                $following = 0; // not following
+                $relationship['status'] = 0; // not following
             }
         }
 
-        // load profile page data
+        // check for following count of auth user
+        $relationship['following_user'] = Relationship::where('follower_id', Auth::id())->count();
+
+        // check for following count of onpage user
+        $relationship['following_onpage'] = Relationship::where('follower_id', $id)->count();
+
+        // check for followers count of auth user
+        $relationship['follower_user'] = Relationship::where('followed_id', Auth::id())->count();
+
+        // check for followers count of auth user
+        $relationship['follower_onpage'] = Relationship::where('followed_id', $id)->count();
+
+        // load onpage user profile data
         $user = User::find($id);
 
-        return view('users.show', compact('user', 'following'));
+        return view('users.show', compact('user', 'relationship'));
     }
 
     /**

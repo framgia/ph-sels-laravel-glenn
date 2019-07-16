@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
 use App\User;
 use App\Relationship;
 
@@ -26,16 +27,15 @@ class RelationshipsController extends Controller
      */
     public function create(Request $request)
     {
-        if($request->following_status == 0) { // not yet followed    
+        if($request->relationship_status == 0) { // not yet followed    
             Relationship::create([
                 'followed_id' => $request->onpage_userid,
                 'follower_id' => Auth::id(),
             ]);
-
-            return back()->with('success', 'User followed.');
+            return back();
         } else {
             User::find(Auth::id())->relationships()->where('followed_id', $request->onpage_userid)->first()->delete();
-            return back()->with('success', 'User unfollowed.');
+            return back();
         }
     }
 
@@ -58,7 +58,28 @@ class RelationshipsController extends Controller
      */
     public function show($id)
     {
-        //
+        // declare arrays
+        $followers = $followings = [];
+
+        // get follower IDs
+        $followerIDs = Relationship::where('followed_id', $id)->get();
+
+        // get following IDs
+        $followingIDs = Relationship::where('follower_id', $id)->get();
+
+        // get follower user data from follower IDs
+        foreach ($followerIDs as $followerID) {
+            $followers = Arr::prepend($followers, User::find($followerID->follower_id));
+        }
+
+        // get following user data from following IDs
+        foreach ($followingIDs as $followingID) {
+            $followings = Arr::prepend($followings, User::find($followingID->followed_id));
+        }
+
+        $user = User::find($id);
+
+        return view('relationships.show', compact('followers', 'followings', 'user'));
     }
 
     /**

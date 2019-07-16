@@ -22,35 +22,54 @@
             <div class="row pt-4">
                 <div class="col">
                     <div class="container">
-                        <p class="text-center"> <strong> 50 </strong> </p>
+                        <p class="text-center">
+                            <strong>
+                                @if ($relationship['status'] == 2)
+                                {{ $relationship['follower_user'] }}
+                                @else
+                                {{ $relationship['follower_onpage'] }}
+                                @endif
+                            </strong>
+                        </p>
                     </div>
-
                     <div class="container">
-                        <p class="text-muted text-center"> followers </p>
+                        <a href="/users/{{ $user->id }}/relationships">
+                            <p class="text-center">followers</p>
+                        </a>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="container">
-                        <p class="text-center"> <strong> 50 </strong> </p>
+                        <p class="text-center">
+                            <strong>
+                                @if ($relationship['status'] == 2)
+                                {{ $relationship['following_user'] }}
+                                @else
+                                {{ $relationship['following_onpage'] }}
+                                @endif
+                            </strong>
+                        </p>
                     </div>
 
                     <div class="container">
-                        <p class="text-muted text-center"> following </p>
+                        <a href="/users/{{ $user->id }}/relationships">
+                            <p class="text-center">following</p>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            @if ($following == 0 || $following == 1)
+            @if ($relationship['status'] != 2)
             <div class="row justify-content-center">
                 <form method="GET" action="/follow">
                     @csrf
                     <input type="hidden" name="onpage_userid" value="{{ $user->id }}">
-                    <input type="hidden" name="following_status" value="{{ $following }}">
- 
-                    @if ($following == 0)
+                    <input type="hidden" name="relationship_status" value="{{ $relationship['status'] }}">
+
+                    @if ($relationship['status'] == 0)
                     <button type="submit" class="btn btn-primary">Follow</button>
-                    @else 
+                    @else
                     <button type="submit" class="btn btn-danger">Unfollow</button>
                     @endif
                 </form>
