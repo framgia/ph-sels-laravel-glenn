@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Category;
 use App\Session;
+use App\User;
+use App\Word;
+use App\Answer;
 
 class CategoriesController extends Controller
 {
@@ -34,28 +37,37 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        // get category id and user id
+        // get category data
         $category = Category::find($id);
         
-        $session = Session::where([['user_id', Auth::id()], ['category_id', 1]]);
+        // get session data
+        $session = Session::where([['user_id', Auth::id()], ['category_id', $id]])->first();
 
-        dd($session);
+        if ($session) {
+            if ($session->is_finished) {
+                // simulate end of page to display results
+                $category = Category::find($id);
+                $answers = Answer::where('user_id', Auth::id())->get()->where('category_id', $id);
 
-        // check if session exists
-        if($session->exists()) {
-            if($session->is_finished) {
-                dd('yes i am finished');
-            } else {
-                dd('no i am not finished');
+                $request->session()->flash('warning', 'User already finished taking this category.');
+
+                return view('categories.results', compact('answers', 'category'));
             }
         } else {
-            dd('no, i dont exist');
+            $session = Session::create([
+                'user_id' => Auth::id(),
+                'category_id' => $id,
+                'last_answered' => 0,
+                'is_finished' => 0
+            ]);
         }
-        
-        dd('henlo');
-        return view('categories.show', compact('category'));
+
+        // paginate words
+        $words = Word::where('category_id', $id)->simplePaginate(1);
+
+        return view('categories.show', compact('category', 'session', 'words'));
     }
 
     /**

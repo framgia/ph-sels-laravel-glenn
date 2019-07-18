@@ -16,7 +16,7 @@ class WordsController extends Controller
      */
     public function index()
     {
-        //
+      
     }
 
     /**

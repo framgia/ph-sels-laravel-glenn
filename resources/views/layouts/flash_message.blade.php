@@ -3,6 +3,7 @@
     <button type="button" class="close" data-dismiss="alert">×</button>
     <strong>{{ $message }}</strong>
 </div>
+{{ Session::forget('success') }}
 @endif
 
 
@@ -11,6 +12,7 @@
     <button type="button" class="close" data-dismiss="alert">×</button>
     <strong>{{ $message }}</strong>
 </div>
+{{ Session::forget('error') }}
 @endif
 
 
@@ -19,6 +21,7 @@
     <button type="button" class="close" data-dismiss="alert">×</button>
     <strong>{{ $message }}</strong>
 </div>
+{{ Session::forget('warning') }}
 @endif
 
 
@@ -27,6 +30,7 @@
     <button type="button" class="close" data-dismiss="alert">×</button>
     <strong>{{ $message }}</strong>
 </div>
+{{ Session::forget('info') }}
 @endif
 
 
