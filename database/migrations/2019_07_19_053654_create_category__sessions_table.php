@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSessionsTable extends Migration
+class CreateCategorySessionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('category__sessions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
 
@@ -26,7 +26,7 @@ class CreateSessionsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-
+            
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
@@ -41,6 +41,6 @@ class CreateSessionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('category__sessions');
     }
 }

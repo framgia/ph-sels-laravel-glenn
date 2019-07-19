@@ -23,12 +23,16 @@ Route::get('/categories/edit', 'CategoriesController@adminIndex');
 Route::resource('categories', 'CategoriesController');
 
 Route::match(['get', 'post'], '/words/create', 'WordsController@create');
+Route::get('/users/{id}/words', 'WordsController@userIndex');
+Route::get('/users/{id}/lessons', 'CategoriesController@userIndex');
 Route::post('/words', 'WordsController@store');
 
 // relationships
 Route::get('/follow', 'RelationshipsController@create');
 Route::get('/users/{id}/relationships', 'RelationshipsController@show');
-Route::resource('session', 'SessionsController');
+
 
 // quiz control
 Route::post('/quizControl', 'QuizController');
+
+Route::resource('category_sessions', 'Category_SessionsController');

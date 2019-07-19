@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Answer;
 use App\Choice;
 use App\Category;
-use App\Session;
 use App\Activity;
+use App\Category_Session;
 
 class QuizController extends Controller
 {
@@ -32,16 +32,16 @@ class QuizController extends Controller
         ]);
 
         if($request->nextPage == null) {
-            $session = Session::where('user_id', Auth::id())->where('category_id', $request->category_id)->first();
-            $session->update([
+            $category_session = Category_Session::where('user_id', Auth::id())->where('category_id', $request->category_id)->first();
+            $category_session->update([
                 'is_finished' => 1
             ]);
 
             // create a activity for finishing category
             Activity::create([
                 'user_id' => Auth::id(),
-                'activity_id' => $session->id,
-                'activity_type' => 'App\Session',
+                'activity_id' => $category_session->id,
+                'activity_type' => 'App\Category_Session',
             ]);
  
             $category = Category::find($request->category_id);

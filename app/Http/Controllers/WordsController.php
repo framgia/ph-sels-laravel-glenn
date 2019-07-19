@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Word;
 use App\Choice;
+use App\Answer;
 
 class WordsController extends Controller
 {
@@ -17,6 +18,13 @@ class WordsController extends Controller
     public function index()
     {
       
+    }
+
+    public function userIndex($id)
+    {
+        $answers = Answer::where('user_id', $id)->where('is_correct', 1)->get();
+
+        return view('words.user_index', compact('answers'));
     }
 
     /**

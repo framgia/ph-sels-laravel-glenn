@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SessionsController extends Controller
+class Category_Sessions extends Controller
 {
     /**
      * Display a listing of the resource.

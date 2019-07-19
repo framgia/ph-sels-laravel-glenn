@@ -24,4 +24,19 @@ class Category extends Model
     {
         return $this->hasManyThrough('App\Choice', 'App\Word');
     }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
+
+    public function sessions()
+    {
+        return $this->hasMany('App\Session');
+    }
+
+    public function category_sessions()
+    {
+        return $this->hasMany('App\Category_Session');
+    }
 }

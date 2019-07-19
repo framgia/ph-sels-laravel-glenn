@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Category_Session;
+use App\Answer;
 
 class DashboardController extends Controller
 {
@@ -20,8 +22,10 @@ class DashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $lessonCount = Category_Session::where('user_id', Auth::id())->where('is_finished', 1)->count();
+        $wordCount = Answer::where('user_id', Auth::id())->where('is_correct', 1)->count();
 
-        return view('dashboard', compact('user'));
+        return view('dashboard', compact('user', 'wordCount', 'lessonCount'));
     }
 
     /**

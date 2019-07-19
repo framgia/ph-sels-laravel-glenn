@@ -47,4 +47,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Activity');
     }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
+
+    public function category_sessions()
+    {
+        return $this->hasMany('App\Category_Session');
+    }
 }

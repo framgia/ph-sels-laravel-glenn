@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Category;
-use App\Session;
+use App\Category_Session;
 use App\User;
 use App\Word;
 use App\Answer;
@@ -17,6 +17,13 @@ class CategoriesController extends Controller
         $categories = Category::all();
 
         return view('categories.admin_index', compact('categories'));
+    }
+
+    public function userIndex($id)
+    {
+        $category_sessions = Category_Session::where('user_id', $id)->where('is_finished', 1)->get();
+
+        return view('categories.user_index', compact('category_sessions'));
     }
 
     /**
@@ -43,10 +50,10 @@ class CategoriesController extends Controller
         $category = Category::find($id);
         
         // get session data
-        $session = Session::where([['user_id', Auth::id()], ['category_id', $id]])->first();
+        $category_session = Category_Session::where([['user_id', Auth::id()], ['category_id', $id]])->first();
 
-        if ($session) {
-            if ($session->is_finished) {
+        if ($category_session) {
+            if ($category_session->is_finished) {
                 // simulate end of page to display results
                 $category = Category::find($id);
                 $answers = Answer::where('user_id', Auth::id())->get()->where('category_id', $id);
@@ -56,7 +63,7 @@ class CategoriesController extends Controller
                 return view('categories.results', compact('answers', 'category'));
             }
         } else {
-            $session = Session::create([
+            $category_session = Category_Session::create([
                 'user_id' => Auth::id(),
                 'category_id' => $id,
                 'last_answered' => 0,
@@ -67,7 +74,7 @@ class CategoriesController extends Controller
         // paginate words
         $words = Word::where('category_id', $id)->simplePaginate(1);
 
-        return view('categories.show', compact('category', 'session', 'words'));
+        return view('categories.show', compact('category', 'category_session', 'words'));
     }
 
     /**

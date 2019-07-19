@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Answer extends Model
+class Category_Session extends Model
 {
     protected $fillable = [
-        'user_id', 'category_id', 'word_id', 'choice_id', 'is_correct'
+        'user_id', 'category_id', 'last_answered', 'is_finished'
     ];
 
     public function user()
@@ -18,15 +18,5 @@ class Answer extends Model
     public function category()
     {
         return $this->belongsTo('App\Category');
-    }
-
-    public function word()
-    {
-        return $this->belongsTo('App\Word');
-    }
-
-    public function choice()
-    {
-        return $this->belongsTo('App\Choice');
     }
 }
