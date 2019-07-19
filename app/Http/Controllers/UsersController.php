@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Relationship;
+use App\Activity;
 use Image;
 use File;
 
@@ -86,9 +87,12 @@ class UsersController extends Controller
         $relationship['follower_onpage'] = Relationship::where('followed_id', $id)->count();
 
         // load onpage user profile data
-        $user = User::find($id);
+        $userOnPage = User::find($id);
 
-        return view('users.show', compact('user', 'relationship'));
+        // load onpage user activities
+        $activities = Activity::where('user_id', $id)->get();
+
+        return view('users.show', compact('userOnPage', 'relationship', 'activities'));
     }
 
     /**

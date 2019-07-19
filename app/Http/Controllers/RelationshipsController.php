@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use App\User;
 use App\Relationship;
+use App\Activity;
 
 class RelationshipsController extends Controller
 {
@@ -28,10 +29,18 @@ class RelationshipsController extends Controller
     public function create(Request $request)
     {
         if($request->relationship_status == 0) { // not yet followed    
-            Relationship::create([
+            $relationship = Relationship::create([
                 'followed_id' => $request->onpage_userid,
                 'follower_id' => Auth::id(),
             ]);
+
+            // create activity when following
+            Activity::create([
+                'user_id' => Auth::id(),
+                'activity_id' => $relationship->id,
+                'activity_type' => 'App\Relationship',
+            ]);
+
             return back();
         } else {
             User::find(Auth::id())->relationships()->where('followed_id', $request->onpage_userid)->first()->delete();

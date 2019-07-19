@@ -2,21 +2,22 @@
 
 @section('content')
 
+
 <div class="container">
     <div class="row justify-content-center">
 
         <div class="col-5">
             <div class="container">
-                <img src="/uploads/avatars/{{ $user->avatar }}" class="border img-fluid rounded-circle mx-auto d-block"
+                <img src="/uploads/avatars/{{ $userOnPage->avatar }}" class="border img-fluid rounded-circle mx-auto d-block"
                     style="max-width: 250px" alt="User Avatar" height="200" />
             </div>
 
             <div class="container pt-4">
-                <h2 class="text-center"> {{ $user->username }} </h2>
+                <h2 class="text-center"> {{ $userOnPage->username }} </h2>
             </div>
 
             <div class="container border-bottom">
-                <p class="text-muted text-center"> {{ $user->first_name . ' ' . $user->last_name }} </p>
+                <p class="text-muted text-center"> {{ $userOnPage->first_name . ' ' . $userOnPage->last_name }} </p>
             </div>
 
             <div class="row pt-4">
@@ -33,7 +34,7 @@
                         </p>
                     </div>
                     <div class="container">
-                        <a href="/users/{{ $user->id }}/relationships">
+                        <a href="/user/{{ $userOnPage->id }}/relationships">
                             <p class="text-center">followers</p>
                         </a>
                     </div>
@@ -53,7 +54,7 @@
                     </div>
 
                     <div class="container">
-                        <a href="/users/{{ $user->id }}/relationships">
+                        <a href="/user/{{ $userOnPage->id }}/relationships">
                             <p class="text-center">following</p>
                         </a>
                     </div>
@@ -64,7 +65,7 @@
             <div class="row justify-content-center">
                 <form method="GET" action="/follow">
                     @csrf
-                    <input type="hidden" name="onpage_userid" value="{{ $user->id }}">
+                    <input type="hidden" name="onpage_userid" value="{{ $userOnPage->id }}">
                     <input type="hidden" name="relationship_status" value="{{ $relationship['status'] }}">
 
                     @if ($relationship['status'] == 0)
@@ -87,10 +88,47 @@
                 <h4 class="p-4"> Activities </h4>
             </div>
 
-            @include('layouts.test_activity')
+            <!-- inject user here to avoid collision with data above -->
+            @inject('user', 'App\User') 
+            @inject('relationship', 'App\Relationship')
+            @inject('session', 'App\Session')
+            @inject('category', 'App\Category')
+            @inject('answer', 'App\Answer')
+            <!--  -->
+            
+            @foreach ($activities as $activity)
+            <div class="row mt-4">
+                <div class="col-3">
+                    <img src="/uploads/avatars/{{ $activity->user->avatar }}" class="border img-fluid rounded-circle mx-auto d-block"
+                        style="max-width: 100px" alt="User Avatar" />
+                </div>
+                <div class="col">
+                    <div class="container">
 
+                    @if ($activity->activity_type == 'App\Session')
+                        {{ $activity->user->first_name }} learned {{ $answer->where('user_id', $userOnPage->id)->where('is_correct', 1)->count() }} of {{ $category->find($session->find($activity->activity_id)->category_id)->words->count() }} words in <a href="/categories/{{ $session->find($activity->activity_id)->category_id }}">{{ $category->find($session->find($activity->activity_id)->category_id)->title }}</a>
+                    @elseif ($activity->activity_type == 'App\Relationship')
+                        {{ $activity->user->first_name }} followed {{ $user->find($relationship->find($activity->activity_id)->followed_id)->first_name }}
+                    @endif
+                    </div>
+                    <div class="container">
+                        <small class="text-muted">{{ $activity->created_at }}</small>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>
-
 @endsection
+
+<!-- 
+
+Dependency injection for:
+
+score/results of user category
+name of category
+relationship
+user
+
+ -->

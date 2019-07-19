@@ -12,6 +12,11 @@ class Relationship extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'follower_id');
+    }
+
+    public function activities()
+    {
+        return $this->morphMany('App\Activity', 'activatable');
     }
 }

@@ -8,6 +8,7 @@ use App\Answer;
 use App\Choice;
 use App\Category;
 use App\Session;
+use App\Activity;
 
 class QuizController extends Controller
 {
@@ -34,6 +35,13 @@ class QuizController extends Controller
             $session = Session::where('user_id', Auth::id())->where('category_id', $request->category_id)->first();
             $session->update([
                 'is_finished' => 1
+            ]);
+
+            // create a activity for finishing category
+            Activity::create([
+                'user_id' => Auth::id(),
+                'activity_id' => $session->id,
+                'activity_type' => 'App\Session',
             ]);
  
             $category = Category::find($request->category_id);
