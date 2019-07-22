@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
 use App\Category_Session;
 use App\Answer;
+use App\Activity;
+use App\Relationship;
 
 class DashboardController extends Controller
 {
@@ -25,7 +28,11 @@ class DashboardController extends Controller
         $lessonCount = Category_Session::where('user_id', Auth::id())->where('is_finished', 1)->count();
         $wordCount = Answer::where('user_id', Auth::id())->where('is_correct', 1)->count();
 
-        return view('dashboard', compact('user', 'wordCount', 'lessonCount'));
+        // get user and all followers' activities
+        $ids = Arr::prepend(Auth::user()->followings->pluck('followed_id')->all(), Auth::id());
+        $activities = Activity::whereIn('user_id', $ids)->get();
+        
+        return view('dashboard', compact('user', 'wordCount', 'lessonCount', 'activities'));
     }
 
     /**

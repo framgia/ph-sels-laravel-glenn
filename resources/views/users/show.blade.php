@@ -87,7 +87,8 @@
             </div>
             <div class="row justify-content-center">
                 <a href="/users/{{ $userOnPage->id }}/lessons">Learned
-                    {{ $category_session->where('user_id', $userOnPage->id)->where('is_finished', 1)->count() }} lessons</a>
+                    {{ $category_session->where('user_id', $userOnPage->id)->where('is_finished', 1)->count() }}
+                    lessons</a>
             </div>
         </div>
 
@@ -97,12 +98,11 @@
                 <h4 class="p-4"> Activities </h4>
             </div>
 
-            <!-- inject here to avoid collision with data above -->
-            @inject('user', 'App\User')
-            @inject('relationship', 'App\Relationship')
-            @inject('category', 'App\Category')
-            <!--  -->
-
+            @if ($activities->isEmpty())
+            <div class="row justify-content-center mt-4">
+                <h4>No activities yet.</h4>
+            </div>
+            @else
             @foreach ($activities as $activity)
             <div class="row mt-4">
                 <div class="col-3">
@@ -113,16 +113,17 @@
                 <div class="col">
                     <div class="container">
 
-                        @if ($activity->activity_type == 'App\Session')
+                        @if ($activity->activity_type == 'App\Category_Session')
                         {{ $activity->user->first_name }} learned
-                        {{ $answer->where('user_id', $userOnPage->id)->where('category_id', $category_session->find($activity->activity_id)->category_id)->where('is_correct', 1)->count() }}
+                        {{ $activity->user->answers->where('user_id', $userOnPage->id)->where('category_id', $activity->activity->category_id)->where('is_correct', 1)->count() }}
                         of
-                        {{ $category->find($category_session->find($activity->activity_id)->category_id)->words->count() }} words
+                        {{ $activity->activity->category->words->count() }}
+                        words
                         in <a
-                            href="/categories/{{ $category_session->find($activity->activity_id)->category_id }}">{{ $category->find($category_session->find($activity->activity_id)->category_id)->title }}</a>
+                            href="/categories/{{ $activity->activity->category->id }}">{{ $activity->activity->category->title }}</a>
                         @elseif ($activity->activity_type == 'App\Relationship')
                         {{ $activity->user->first_name }} followed
-                        {{ $user->find($relationship->find($activity->activity_id)->followed_id)->first_name }}
+                        {{ $activity->activity->following->first_name }}
                         @endif
                     </div>
                     <div class="container">
@@ -131,6 +132,7 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
     </div>
 </div>

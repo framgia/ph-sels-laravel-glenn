@@ -67,7 +67,7 @@ class UsersController extends Controller
         if(Auth::id() == $id) {
             $relationship['status'] = 2; // self
         } else {
-            if(Auth::user()->relationships()->where('followed_id', $id)->first()) {
+            if(Auth::user()->followings()->where('followed_id', $id)->first()) {
                 $relationship['status'] = 1; // already following
             } else {
                 $relationship['status'] = 0; // not following

@@ -58,10 +58,12 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Admin
                             </a>
+                            @auth
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/categories/create">Add Category</a>
                                 <a class="dropdown-item" href="/categories/edit">Edit Category</a>
                             </div>
+                            @endauth
                         </li>
                         @endauth
 

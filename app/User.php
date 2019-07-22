@@ -38,7 +38,12 @@ class User extends Authenticatable
     ];
 
 
-    public function relationships()
+    public function followers()
+    {
+        return $this->hasMany('App\Relationship', 'followed_id');
+    }
+
+    public function followings()
     {
         return $this->hasMany('App\Relationship', 'follower_id');
     }

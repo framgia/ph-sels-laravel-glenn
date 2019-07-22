@@ -19,4 +19,9 @@ class Category_Session extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function activity()
+    {
+        return $this->morphOne('App\Activity', 'activity');
+    }
 }

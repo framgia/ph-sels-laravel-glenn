@@ -43,7 +43,15 @@ class RelationshipsController extends Controller
 
             return back();
         } else {
-            User::find(Auth::id())->relationships()->where('followed_id', $request->onpage_userid)->first()->delete();
+            // retrieve entry in relationships table
+            $temp = User::find(Auth::id())->relationships->where('followed_id', $request->onpage_userid)->first();
+
+            // delete entry in activities table
+            User::find(Auth::id())->activities->where('activity_id', $temp->id)->first()->delete();
+
+            // delete relationships table entry
+            $temp->delete();
+
             return back();
         }
     }
