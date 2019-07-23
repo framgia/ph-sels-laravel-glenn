@@ -41,7 +41,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -52,7 +52,26 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $validatedData = $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        User::create([
+            'first_name' => $validatedData['first_name'],
+            'last_name' =>  $validatedData['last_name'],
+            'username' =>$validatedData['username'],
+            'email' => $validatedData['email'],
+            'password' => $validatedData['password'],
+            'is_admin' => $request->level,
+        ]);
+
+        $users = User::all();
+        $request->session()->flash('success', 'User profile created successfully.');
+        return view('users.index', compact('users'));
     }
 
     /**

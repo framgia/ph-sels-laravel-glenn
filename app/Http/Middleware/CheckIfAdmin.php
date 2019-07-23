@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Auth;
 use Closure;
 
 class CheckIfAdmin
@@ -15,11 +16,8 @@ class CheckIfAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->is_admin == '1') {
-            dd('i am admin');
-        }
-        else{
-            dd('i am not admin');
+        if(Auth::user()->is_admin == '0') {
+            return back()->with('warning', 'User is not authorized to access this page.');
         }
         
         return $next($request);

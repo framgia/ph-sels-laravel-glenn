@@ -19,7 +19,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UsersController');
 Route::resource('dashboard', 'DashboardController');
-Route::get('/categories/edit', 'CategoriesController@adminIndex');
+Route::get('/categories/edit', 'CategoriesController@adminIndex')->middleware('admin');
 Route::resource('categories', 'CategoriesController');
 
 Route::match(['get', 'post'], '/words/create', 'WordsController@create');
